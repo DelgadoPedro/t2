@@ -47,8 +47,6 @@ I_specular = light_specular × material_specular × (R·V)^shininess
 - V = vetor do observador
 - `shininess` controla o tamanho do highlight (maior = menor e mais brilhante)
 
----
-
 ## Implementação OpenGL
 
 ### Resumo
