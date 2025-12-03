@@ -59,12 +59,8 @@ Aplicação completa em PyQt5 para desenho de polígonos 2D, visualização 3D e
 - Ajuste a profundidade de extrusão
 - Visualize em todas as abas 3D
 
-## 📚 Documentação
-
-- **[Clique aqui](docs/ILUMINACAO_IMPLEMENTACAO.md)** para acessar a explicação detalhada sobre a implementação dos modelos de iluminação (Flat, Gouraud, Phong) tanto no OpenGL quanto no Scan Line
-
 ## 🔧 Algoritmos Implementados
-
+- **[Clique aqui](docs/ILUMINACAO_IMPLEMENTACAO.md)** para acessar a explicação detalhada sobre a implementação dos modelos de iluminação (Flat, Gouraud, Phong) tanto no OpenGL quanto no Scan Line
 ### Scanline 2D (ET/AET)
 - **Edge Table (ET)**: Tabela de arestas organizadas por Y mínimo
 - **Active Edge Table (AET)**: Arestas ativas na linha atual
