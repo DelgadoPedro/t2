@@ -2,18 +2,7 @@
 
 Aplicação completa em PyQt5 para desenho de polígonos 2D, visualização 3D e renderização com diferentes modelos de iluminação. Implementa algoritmos de scanline, projeções 3D e shading (Flat, Gouraud e Phong).
 
-## 📋 Índice
-
-- [Características](#características)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Instalação](#instalação)
-- [Como Usar](#como-usar)
-- [Funcionalidades](#funcionalidades)
-- [Criar Executável](#criar-executável)
-- [Documentação](#documentação)
-
-## ✨ Características
+## Características
 
 - **Desenho 2D**: Criação de polígonos com mouse e preenchimento usando scanline (ET/AET)
 - **Visualização 3D**: Múltiplas abas com diferentes métodos de renderização
@@ -23,7 +12,7 @@ Aplicação completa em PyQt5 para desenho de polígonos 2D, visualização 3D e
 - **Extrusão**: Conversão de polígonos 2D para objetos 3D
 - **Controles Interativos**: Mouse e teclado para navegação e zoom
 
-## 🛠 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Linguagem e Framework
 - **Python 3.9+**: Linguagem principal
@@ -67,68 +56,7 @@ t1-cg-main/
     └── SimplePaint.exe        # Executável standalone
 ```
 
-## 🚀 Instalação
-
-### Pré-requisitos
-- Python 3.9 ou superior
-- pip (gerenciador de pacotes Python)
-
-### Passo a Passo
-
-1. **Clone ou baixe o repositório**
-
-2. **Crie um ambiente virtual (recomendado)**
-   ```bash
-   python -m venv .venv
-   ```
-
-3. **Ative o ambiente virtual**
-   
-   **Windows (PowerShell):**
-   ```powershell
-   .\.venv\Scripts\Activate.ps1
-   ```
-   
-   **Windows (CMD):**
-   ```cmd
-   .venv\Scripts\activate.bat
-   ```
-   
-   **Linux/Mac:**
-   ```bash
-   source .venv/bin/activate
-   ```
-
-4. **Instale as dependências**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## 🎮 Como Usar
-
-### Opção 1: Executar o Executável (Recomendado)
-
-1. Vá para a pasta `releases/`
-2. Execute `SimplePaint.exe`
-3. **Não é necessário ter Python instalado!**
-
-### Opção 2: Executar do Código-Fonte
-
-1. Com o ambiente virtual ativado, execute:
-   ```bash
-   python main.py
-   ```
-
-2. A aplicação abrirá com 4 abas:
-   - **Desenho 2D**: Desenhe polígonos e preencha com scanline
-   - **Visualização 2D**: Visualize objetos 3D com projeção manual
-   - **OpenGL (Iluminação)**: Renderização OpenGL com Flat/Gouraud/Phong
-   - **Phong (Scan Line)**: Renderização Phong verdadeiro usando scan line customizado
-     - Interpolação de normais por pixel
-     - Cálculo de iluminação Phong completo
-     - Fonte de luz visível na tela
-
-## 🎯 Funcionalidades
+## Funcionalidades
 
 ### Desenho 2D
 - **Adicionar pontos**: Clique com botão esquerdo
@@ -161,24 +89,9 @@ t1-cg-main/
 - Ajuste a profundidade de extrusão
 - Visualize em todas as abas 3D
 
-## 📦 Criar Executável
-
-Para criar um executável standalone, veja `docs/BUILD_INSTRUCTIONS.md` ou execute:
-
-```bash
-pip install pyinstaller
-python -m PyInstaller --name=SimplePaint --windowed --onefile --add-data "src;src" --hidden-import=PyQt5.QtCore --hidden-import=PyQt5.QtGui --hidden-import=PyQt5.QtWidgets --hidden-import=OpenGL --hidden-import=OpenGL.GL --hidden-import=OpenGL.GLU --hidden-import=numpy --hidden-import=geometry3d --hidden-import=polygon_fill --hidden-import=scanline_phong --hidden-import=opengl_viewer --hidden-import=canvas_2d --hidden-import=widgets --paths=src main.py
-```
-
-O executável será criado em `dist/SimplePaint.exe`.
-
-**Nota**: O executável pode ser grande (~100-200 MB) por incluir todas as dependências.
-
 ## 📚 Documentação
 
-- **[docs/RELATORIO_FUNCIONAMENTO.md](docs/RELATORIO_FUNCIONAMENTO.md)**: Relatório completo de funcionamento do sistema com descrição, demonstração e conclusões
-- **[docs/ILUMINACAO_IMPLEMENTACAO.md](docs/ILUMINACAO_IMPLEMENTACAO.md)**: Explicação detalhada sobre a implementação dos modelos de iluminação (Flat, Gouraud, Phong) tanto no OpenGL quanto no Scan Line
-- **[docs/BUILD_INSTRUCTIONS.md](docs/BUILD_INSTRUCTIONS.md)**: Instruções detalhadas para criar o executável
+- **[Clique aqui](docs/ILUMINACAO_IMPLEMENTACAO.md)** para acessar a explicação detalhada sobre a implementação dos modelos de iluminação (Flat, Gouraud, Phong) tanto no OpenGL quanto no Scan Line
 
 ## 🔧 Algoritmos Implementados
 
@@ -203,5 +116,3 @@ O executável será criado em `dist/SimplePaint.exe`.
 - Translação
 - Escala
 - Composição de transformações
-
-
