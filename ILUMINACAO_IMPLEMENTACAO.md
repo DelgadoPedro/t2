@@ -1,19 +1,6 @@
 # Implementação dos Modelos de Iluminação
 
 Este documento explica detalhadamente como os modelos de iluminação foram implementados no projeto, tanto na versão OpenGL quanto na versão Scan Line customizada.
-
-**Última atualização**: Implementação de Phong verdadeiro no Scan Line, com iluminação otimizada e triangulação melhorada.
-
-## 📋 Índice
-
-- [Visão Geral](#visão-geral)
-- [Modelo de Iluminação Phong](#modelo-de-iluminação-phong)
-- [Implementação OpenGL](#implementação-opengl)
-- [Implementação Scan Line](#implementação-scan-line)
-- [Comparação das Implementações](#comparação-das-implementações)
-
----
-
 ## Visão Geral
 
 O projeto implementa três modelos de shading:
@@ -24,8 +11,6 @@ O projeto implementa três modelos de shading:
 Existem duas implementações:
 - **OpenGL**: Usa funções prontas do OpenGL para cálculos de iluminação
 - **Scan Line**: Implementação manual completa do algoritmo
-
----
 
 ## Modelo de Iluminação Phong
 
@@ -400,85 +385,6 @@ material_shininess = 64.0
    - Divisão otimizada de faces quadradas
    - Reduz artefatos visuais nas arestas
 
----
-
-## Comparação das Implementações
-
-| Aspecto | OpenGL | Scan Line |
-|---------|--------|-----------|
-| **Cálculo de Iluminação** | Funções prontas | Implementação manual |
-| **Interpolação** | Hardware (GPU) | Software (CPU) |
-| **Performance** | Muito rápida | Mais lenta (otimizada) |
-| **Controle** | Limitado | Total |
-| **Phong Verdadeiro** | Sim (hardware) | ✅ Sim (implementação manual por pixel) |
-| **Z-buffer** | Automático | Manual (NumPy) |
-| **Normais** | Manual | Manual |
-
-### Vantagens OpenGL
-- ✅ Performance excelente (GPU)
-- ✅ Phong shading verdadeiro
-- ✅ Menos código
-
-### Vantagens Scan Line
-- ✅ Controle total sobre o algoritmo
-- ✅ Entendimento completo do processo
-- ✅ Fácil de debugar e modificar
-- ✅ Não depende de hardware gráfico
-
----
-
-## Resumo: Funções Prontas vs Implementação Manual
-
-### ✅ **Funções Prontas do OpenGL:**
-1. **Cálculo da iluminação Phong** - OpenGL faz automaticamente
-2. **Interpolação de cores/normais** - `glShadeModel()` controla
-3. **Aplicação de luz e material** - `glLightfv()` e `glMaterialfv()`
-4. **Z-buffer** - Automático
-
-### 🔧 **Implementação Manual (Ambas):**
-1. **Cálculo de normais das faces** - Produto vetorial manual
-2. **Cálculo de normais dos vértices** - Média das normais das faces adjacentes
-3. **Transformação de normais** - Aplicação da matriz de rotação
-4. **Aplicação de normais** - Antes de cada vértice/pixel
-
-### 🔧 **Implementação Manual (Apenas Scan Line):**
-1. **Cálculo de iluminação Phong** - Fórmulas implementadas manualmente por pixel
-2. **Interpolação de normais** - Interpolação bilinear entre vértices (Phong verdadeiro)
-3. **Interpolação de posições 3D** - Para cálculo correto de vetores de luz e vista
-4. **Triangulação de faces** - Divisão otimizada de polígonos em triângulos
-5. **Z-buffer** - Implementação manual com NumPy
-6. **Renderização pixel a pixel** - Controle total sobre cada pixel renderizado
-7. **Cálculo de cor por pixel** - Cada pixel calcula sua própria iluminação usando normal interpolada
-
----
-
-## Diferença Principal: Gouraud vs Phong
-
-| Aspecto | Gouraud | Phong |
-|---------|---------|-------|
-| **O que é interpolado?** | Cores RGB | Normais |
-| **Onde a iluminação é calculada?** | Nos vértices | Em cada pixel |
-| **Highlights especulares** | Podem aparecer distorcidos | Mais precisos |
-| **Performance** | Mais rápido | Mais lento |
-| **Implementação Scan Line** | ✅ Implementado | ❌ Usa Gouraud (otimização) |
-
-**Nota importante**: 
-- No OpenGL, tanto Gouraud quanto Phong usam `GL_SMOOTH`. A diferença real está em **como o OpenGL processa internamente**.
-- Na implementação Scan Line, implementamos **Phong verdadeiro** (interpolação de normais e cálculo por pixel), o que é mais lento mas produz resultados mais precisos, especialmente para highlights especulares.
-- A iluminação foi ajustada com valores mais altos de ambiente e difusa para melhor visibilidade.
-- A triangulação foi otimizada para reduzir divisões visíveis em faces quadradas.
-
----
-
-## Conclusão
-
-O projeto implementa iluminação de duas formas complementares:
-
-1. **OpenGL**: Demonstra o uso de APIs gráficas prontas, com excelente performance e Phong shading verdadeiro
-2. **Scan Line**: Demonstra o entendimento completo dos algoritmos, com implementação manual de todos os passos
-
-Ambas as implementações calculam normais manualmente (porque depende da geometria do objeto), mas diferem em como calculam a iluminação:
-- **OpenGL**: Deixa o hardware fazer o trabalho
 - **Scan Line**: Implementa todas as fórmulas manualmente
 
 Isso proporciona uma compreensão completa dos algoritmos de iluminação em computação gráfica.
