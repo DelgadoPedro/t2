@@ -26,36 +26,6 @@ Aplicação completa em PyQt5 para desenho de polígonos 2D, visualização 3D e
 ### Ferramentas de Build
 - **PyInstaller**: Criação de executáveis standalone
 
-## 📁 Estrutura do Projeto
-
-```
-t1-cg-main/
-├── README.md                   # 📄 Documentação principal (este arquivo)
-├── requirements.txt            # 📦 Dependências Python
-├── icon.ico                    # 🎨 Ícone da aplicação
-├── main.py                     # 🚀 Launcher principal
-│
-├── src/                        # 💻 Código-fonte da aplicação
-│   ├── canvas_2d.py           # Canvas 2D para desenho de polígonos
-│   ├── widgets.py             # Componentes de interface (Canvas3D, CanvasPhong, MainWindow)
-│   ├── polygon_fill.py        # Algoritmo scanline 2D (ET/AET)
-│   ├── geometry3d.py          # Utilitários de geometria 3D
-│   ├── opengl_viewer.py       # Visualizador OpenGL com iluminação
-│   └── scanline_phong.py      # Renderizador Phong com scan line
-│
-├── docs/                       # 📚 Documentação
-│   ├── ILUMINACAO_IMPLEMENTACAO.md  # Detalhes sobre implementação de iluminação
-│   ├── BUILD_INSTRUCTIONS.md  # Instruções para criar executável
-│   └── RELATORIO_FUNCIONAMENTO.md   # Relatório de funcionamento do sistema
-│
-├── config/                     # ⚙️ Arquivos de configuração
-│   ├── SimplePaint.spec       # Especificação PyInstaller (atual)
-│   └── PolygonFill.spec       # Especificação PyInstaller (legado)
-│
-└── releases/                   # 📦 Executáveis compilados
-    └── SimplePaint.exe        # Executável standalone
-```
-
 ## Funcionalidades
 
 ### Desenho 2D
