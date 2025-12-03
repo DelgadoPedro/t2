@@ -1,6 +1,7 @@
 # Polygon Fill - Aplicação de Computação Gráfica
 
 Aplicação completa em PyQt5 para desenho de polígonos 2D, visualização 3D e renderização com diferentes modelos de iluminação. Implementa algoritmos de scanline, projeções 3D e shading (Flat, Gouraud e Phong).
+**[Clique aqui](https://youtu.be/xbzDjTns7_w) para acessar o vídeo de demonstração do projeto!**
 
 ## Características
 
