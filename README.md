@@ -1,0 +1,207 @@
+# Polygon Fill - Aplicação de Computação Gráfica
+
+Aplicação completa em PyQt5 para desenho de polígonos 2D, visualização 3D e renderização com diferentes modelos de iluminação. Implementa algoritmos de scanline, projeções 3D e shading (Flat, Gouraud e Phong).
+
+## 📋 Índice
+
+- [Características](#características)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Instalação](#instalação)
+- [Como Usar](#como-usar)
+- [Funcionalidades](#funcionalidades)
+- [Criar Executável](#criar-executável)
+- [Documentação](#documentação)
+
+## ✨ Características
+
+- **Desenho 2D**: Criação de polígonos com mouse e preenchimento usando scanline (ET/AET)
+- **Visualização 3D**: Múltiplas abas com diferentes métodos de renderização
+- **Modelos de Iluminação**: Flat, Gouraud e Phong shading
+- **Projeções**: Perspectiva e ortográfica
+- **Transformações 3D**: Rotação, translação, escala
+- **Extrusão**: Conversão de polígonos 2D para objetos 3D
+- **Controles Interativos**: Mouse e teclado para navegação e zoom
+
+## 🛠 Tecnologias Utilizadas
+
+### Linguagem e Framework
+- **Python 3.9+**: Linguagem principal
+- **PyQt5 5.15.11**: Framework GUI para interface gráfica
+
+### Bibliotecas de Computação Gráfica
+- **PyOpenGL 3.1.0+**: Renderização OpenGL para iluminação avançada
+- **PyOpenGL-accelerate**: Aceleração OpenGL
+- **NumPy 1.21.0+**: Operações matemáticas e arrays eficientes
+
+### Ferramentas de Build
+- **PyInstaller**: Criação de executáveis standalone
+
+## 📁 Estrutura do Projeto
+
+```
+t1-cg-main/
+├── README.md                   # 📄 Documentação principal (este arquivo)
+├── requirements.txt            # 📦 Dependências Python
+├── icon.ico                    # 🎨 Ícone da aplicação
+├── main.py                     # 🚀 Launcher principal
+│
+├── src/                        # 💻 Código-fonte da aplicação
+│   ├── canvas_2d.py           # Canvas 2D para desenho de polígonos
+│   ├── widgets.py             # Componentes de interface (Canvas3D, CanvasPhong, MainWindow)
+│   ├── polygon_fill.py        # Algoritmo scanline 2D (ET/AET)
+│   ├── geometry3d.py          # Utilitários de geometria 3D
+│   ├── opengl_viewer.py       # Visualizador OpenGL com iluminação
+│   └── scanline_phong.py      # Renderizador Phong com scan line
+│
+├── docs/                       # 📚 Documentação
+│   ├── ILUMINACAO_IMPLEMENTACAO.md  # Detalhes sobre implementação de iluminação
+│   ├── BUILD_INSTRUCTIONS.md  # Instruções para criar executável
+│   └── RELATORIO_FUNCIONAMENTO.md   # Relatório de funcionamento do sistema
+│
+├── config/                     # ⚙️ Arquivos de configuração
+│   ├── SimplePaint.spec       # Especificação PyInstaller (atual)
+│   └── PolygonFill.spec       # Especificação PyInstaller (legado)
+│
+└── releases/                   # 📦 Executáveis compilados
+    └── SimplePaint.exe        # Executável standalone
+```
+
+## 🚀 Instalação
+
+### Pré-requisitos
+- Python 3.9 ou superior
+- pip (gerenciador de pacotes Python)
+
+### Passo a Passo
+
+1. **Clone ou baixe o repositório**
+
+2. **Crie um ambiente virtual (recomendado)**
+   ```bash
+   python -m venv .venv
+   ```
+
+3. **Ative o ambiente virtual**
+   
+   **Windows (PowerShell):**
+   ```powershell
+   .\.venv\Scripts\Activate.ps1
+   ```
+   
+   **Windows (CMD):**
+   ```cmd
+   .venv\Scripts\activate.bat
+   ```
+   
+   **Linux/Mac:**
+   ```bash
+   source .venv/bin/activate
+   ```
+
+4. **Instale as dependências**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## 🎮 Como Usar
+
+### Opção 1: Executar o Executável (Recomendado)
+
+1. Vá para a pasta `releases/`
+2. Execute `SimplePaint.exe`
+3. **Não é necessário ter Python instalado!**
+
+### Opção 2: Executar do Código-Fonte
+
+1. Com o ambiente virtual ativado, execute:
+   ```bash
+   python main.py
+   ```
+
+2. A aplicação abrirá com 4 abas:
+   - **Desenho 2D**: Desenhe polígonos e preencha com scanline
+   - **Visualização 2D**: Visualize objetos 3D com projeção manual
+   - **OpenGL (Iluminação)**: Renderização OpenGL com Flat/Gouraud/Phong
+   - **Phong (Scan Line)**: Renderização Phong verdadeiro usando scan line customizado
+     - Interpolação de normais por pixel
+     - Cálculo de iluminação Phong completo
+     - Fonte de luz visível na tela
+
+## 🎯 Funcionalidades
+
+### Desenho 2D
+- **Adicionar pontos**: Clique com botão esquerdo
+- **Fechar polígono**: Clique com botão direito ou use o botão "Close Polygon"
+- **Preencher**: Use o botão "Fill" para aplicar scanline
+- **Cores**: Escolha cor de contorno e preenchimento
+- **Validações**: Alertas automáticos para polígonos inválidos:
+  - Polígonos com menos de 3 pontos
+  - Polígonos com pontos colineares
+
+### Visualização 3D
+- **Rotação**: Arraste com botão esquerdo do mouse
+- **Zoom**: Use a roda do mouse ou teclas **1** (zoom in) e **2** (zoom out)
+- **Projeção**: Alterne entre perspectiva e ortográfica
+  - **Perspectiva**: Ajuste a distância da projeção para controlar o FOV
+  - **Ortográfica**: Projeção paralela sem distorção
+- **Iluminação**: 
+  - **OpenGL**: Controle posição da luz com setas do teclado
+  - **Scan Line**: Fonte de luz visível na tela (representação gráfica)
+
+### Modelos de Iluminação
+- **Flat Shading**: Uma cor por face
+- **Gouraud Shading**: Interpolação de cores entre vértices
+- **Phong Shading**: Interpolação de normais com cálculo por pixel (mais realista)
+  - **OpenGL**: Usa funções prontas do OpenGL
+  - **Scan Line**: Implementação manual completa com Phong verdadeiro
+
+### Extrusão
+- Converta polígonos 2D em objetos 3D
+- Ajuste a profundidade de extrusão
+- Visualize em todas as abas 3D
+
+## 📦 Criar Executável
+
+Para criar um executável standalone, veja `docs/BUILD_INSTRUCTIONS.md` ou execute:
+
+```bash
+pip install pyinstaller
+python -m PyInstaller --name=SimplePaint --windowed --onefile --add-data "src;src" --hidden-import=PyQt5.QtCore --hidden-import=PyQt5.QtGui --hidden-import=PyQt5.QtWidgets --hidden-import=OpenGL --hidden-import=OpenGL.GL --hidden-import=OpenGL.GLU --hidden-import=numpy --hidden-import=geometry3d --hidden-import=polygon_fill --hidden-import=scanline_phong --hidden-import=opengl_viewer --hidden-import=canvas_2d --hidden-import=widgets --paths=src main.py
+```
+
+O executável será criado em `dist/SimplePaint.exe`.
+
+**Nota**: O executável pode ser grande (~100-200 MB) por incluir todas as dependências.
+
+## 📚 Documentação
+
+- **[docs/RELATORIO_FUNCIONAMENTO.md](docs/RELATORIO_FUNCIONAMENTO.md)**: Relatório completo de funcionamento do sistema com descrição, demonstração e conclusões
+- **[docs/ILUMINACAO_IMPLEMENTACAO.md](docs/ILUMINACAO_IMPLEMENTACAO.md)**: Explicação detalhada sobre a implementação dos modelos de iluminação (Flat, Gouraud, Phong) tanto no OpenGL quanto no Scan Line
+- **[docs/BUILD_INSTRUCTIONS.md](docs/BUILD_INSTRUCTIONS.md)**: Instruções detalhadas para criar o executável
+
+## 🔧 Algoritmos Implementados
+
+### Scanline 2D (ET/AET)
+- **Edge Table (ET)**: Tabela de arestas organizadas por Y mínimo
+- **Active Edge Table (AET)**: Arestas ativas na linha atual
+- Preenchimento eficiente de polígonos complexos
+
+### Scanline 3D com Phong Shading Verdadeiro
+- Interpolação de normais e posições 3D por pixel
+- Z-buffer para oclusão
+- Cálculo de iluminação Phong verdadeiro por pixel (não Gouraud)
+- Triangulação otimizada para faces quadradas
+- Iluminação ajustada para melhor visibilidade
+
+### Projeções 3D
+- **Perspectiva**: Projeção com ponto de fuga
+- **Ortográfica**: Projeção paralela
+
+### Transformações 3D
+- Rotação
+- Translação
+- Escala
+- Composição de transformações
+
+
