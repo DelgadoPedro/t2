@@ -98,8 +98,6 @@ def _calculate_face_normals_from_original(self, obj):
 
 **Resultado**: Faces com bordas visíveis, aparência "facetada"
 
----
-
 ### 2. Gouraud Shading
 
 #### Como funciona:
@@ -146,8 +144,6 @@ def _calculate_vertex_normals_from_original(self, obj, face_normals):
 
 **Resultado**: Superfície suave, mas highlights especulares podem aparecer distorcidos
 
----
-
 ### 3. Phong Shading
 
 #### Como funciona:
@@ -176,8 +172,6 @@ if self.shading_model == 'phong':
 
 **Resultado**: Superfície suave com highlights especulares realistas
 
----
-
 ### Configuração da Iluminação (OpenGL)
 
 #### Configuração da Luz:
@@ -195,8 +189,6 @@ glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, material_diffuse)
 glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, material_specular)
 glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, shininess)
 ```
-
----
 
 ## Implementação Scan Line
 
